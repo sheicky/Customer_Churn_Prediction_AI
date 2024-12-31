@@ -1,10 +1,24 @@
 import os
+from dotenv import load_dotenv
 import pickle
 import pandas as pd
 import utils as ut
 import numpy as np
 import streamlit as st
 from openai import OpenAI
+import xgboost as xgb
+
+load_dotenv()  # Charge les variables depuis .env
+
+# Définissez la classe AVANT de charger les modèles
+class CustomXGBClassifier(xgb.XGBClassifier):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+    
+    def predict_proba(self, X):
+        if isinstance(X, pd.DataFrame):
+            X = X.values
+        return super().predict_proba(X)
 
 client = OpenAI(
   base_url="https://api.groq.com/openai/v1",
@@ -13,23 +27,24 @@ client = OpenAI(
 
 
 def load_model(filename) : 
-  # Get the directory of the current script
-  script_dir = os.path.dirname(os.path.abspath(__file__))
-  # Construct the absolute path to the model file
-  filepath = os.path.join(script_dir, filename)
-  with open(filepath, "rb") as file : 
-      return pickle.load(file)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_dir = os.path.join(script_dir, "models")
+    filepath = os.path.join(model_dir, filename)
+    try:
+        with open(filepath, "rb") as file : 
+            return pickle.load(file)
+    except FileNotFoundError:
+        print(f"Warning: Model file {filename} not found")
+        return None
 
-naive_bayes_model = load_model('nb_model.pkl')
+
 random_forest_model = load_model("rf_model.pkl")
-decision_tree_model = load_model("dt_model.pkl")
-svm_model = load_model("svm_model.pkl")
 knn_model = load_model("knn_model.pkl")
+xgboost_model = load_model("xgb_model.pkl")
 
-voting_classifiers_model = load_model("voting_clf.pkl")
 xgboost_SMOTE_model = load_model("xgb_modelSMOTE.pkl")
 xbgboost_featureEngineered_model = load_model("xgb_modeEngineered.pkl")
-xgboost_model = load_model('xgb_model.pkl')
+
 
 def prepare_input(credit_score, location, gender, age, tenure, balance,
 num_products, has_credit_card, is_active_member, estimated_salary):
