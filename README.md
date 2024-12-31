@@ -14,6 +14,10 @@
 ## 📋 Overview
 
 An advanced machine learning application that predicts customer churn probability using ensemble methods and provides personalized insights through an interactive Streamlit dashboard.
+![image](https://github.com/user-attachments/assets/41ff0983-8773-4631-9740-16bbbabcc015)
+![image](https://github.com/user-attachments/assets/fe291c40-4898-4883-bd5c-32c0a63a7095)
+
+
 
 ## 🌟 Features
 
