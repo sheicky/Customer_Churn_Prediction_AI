@@ -1,9 +1,15 @@
-# 🎯 Customer Churn Prediction
-
-![Python](https://img.shields.io/badge/Python-3.12-blue.svg)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.6.0-orange.svg)
-![XGBoost](https://img.shields.io/badge/XGBoost-2.1.3-green.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-latest-red.svg)
+<div align="center">
+  <h1>🎯 Customer Churn Prediction</h1>
+  <p>
+    <em>Made with ❤️ by Sheick</em>
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.12-blue.svg" alt="Python">
+    <img src="https://img.shields.io/badge/Scikit--learn-1.6.0-orange.svg" alt="Scikit-learn">
+    <img src="https://img.shields.io/badge/XGBoost-2.1.3-green.svg" alt="XGBoost">
+    <img src="https://img.shields.io/badge/Streamlit-latest-red.svg" alt="Streamlit">
+  </p>
+</div>
 
 ## 📋 Overview
 
@@ -47,32 +53,53 @@ An advanced machine learning application that predicts customer churn probabilit
 
 1. Clone the repository
 
+```bash
+git clone https://github.com/yourusername/Customer_Churn.git
+cd Customer_Churn
+```
+
+2. Create a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up environment variables
+
+```bash
+cp .env.example .env
+# Add your GROQ_API_KEY to .env
+```
+
+5. Run the application
+
+```bash
+streamlit run main.py
 ```
 
 ## 📊 Model Performance
 
-| Model | Accuracy | F1-Score | ROC AUC |
-|-------|----------|----------|---------|
-| XGBoost | 0.859 | 0.85 | 0.89 |
-| Random Forest | 0.854 | 0.84 | 0.88 |
-| KNN | 0.832 | 0.82 | 0.85 |
+| Model         | Accuracy | F1-Score | ROC AUC |
+| ------------- | -------- | -------- | ------- |
+| XGBoost       | 0.859    | 0.85     | 0.89    |
+| Random Forest | 0.854    | 0.84     | 0.88    |
+| KNN           | 0.832    | 0.82     | 0.85    |
 
 ## 🔍 Project Structure
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- Your Name - Initial work - [GitHub Profile](https://github.com/yourusername)
-
-## 🙏 Acknowledgments
-
-- Dataset provided by [source]
-- Inspired by [reference]
+```
+Customer_Churn/
+├── main.py              # Main Streamlit application
+├── utils.py             # Utility functions
+├── models/             # Trained ML models
+├── churn.csv           # Dataset
+├── requirements.txt    # Project dependencies
+└── README.md          # Project documentation
 ```

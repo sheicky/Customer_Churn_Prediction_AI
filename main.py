@@ -8,6 +8,27 @@ import streamlit as st
 from openai import OpenAI
 import xgboost as xgb
 
+# Configuration de la page Streamlit
+st.set_page_config(
+    page_title="Customer Churn Prediction",
+    page_icon="🎯",
+    layout="wide"
+)
+
+# Signature stylisée
+st.markdown(
+    """
+    <div style='text-align: center; padding: 1rem;'>
+        <h1>🎯 Customer Churn Prediction</h1>
+        <p style='color: #666; font-style: italic;'>Made with ❤️ by Sheick</p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Ajoutez une ligne de séparation
+st.markdown("---")
+
 load_dotenv()  # Charge les variables depuis .env
 
 # Définissez la classe AVANT de charger les modèles
